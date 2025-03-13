@@ -10,6 +10,15 @@ conn = sqlite3.connect("nhl_data.db")
 df_stats = pd.read_sql("SELECT * FROM team_stats", conn)
 conn.close()
 
+import os
+
+st.write("Current Directory:", os.getcwd())
+st.write("Files in Directory:", os.listdir())
+
+# Check if the file exists
+st.write("Does nhl_model.pkl exist?", os.path.isfile("nhl_model.pkl"))
+
+
 # Load trained model & scaler
 with open("nhl_model.pkl", "rb") as f:
     model, scaler = pickle.load(f)
